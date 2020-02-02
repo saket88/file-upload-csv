@@ -61,9 +61,12 @@ public class FileUploadController {
 
     private List<UserLocationDataEntity> getUserLocationDataEntities(List<UserLocationData> userLocations) {
         List<UserLocationDataEntity> userLocationDataEntities= new ArrayList<>();
+        constructUserLocationDataEntities(userLocations, userLocationDataEntities);
+        return userLocationDataEntities;
+    }
 
-        userLocations.forEach(userLocationData ->
-        {
+    private void constructUserLocationDataEntities(List<UserLocationData> userLocations, List<UserLocationDataEntity> userLocationDataEntities) {
+        for (UserLocationData userLocationData : userLocations) {
             userLocationDataEntities.add(
                     UserLocationDataEntity.builder()
                             .id(userLocationData.getId())
@@ -72,9 +75,8 @@ public class FileUploadController {
                             .outletName(userLocationData.getOutletName())
                             .outletType(userLocationData.getOutletType())
                             .build()
-                    );
-        });
-        return userLocationDataEntities;
+            );
+        }
     }
 
     private List<UserLocationData> getDistinctUserLocations(CsvToBean<UserLocationData> csvToBean) {
