@@ -5,14 +5,16 @@
 
 3. The test data can be found in src/main/resources/user-location-data.csv
 
+4. JDK 8.
+
 
 Steps to run(Please make sure Docker is running)
 
 
 1. ./mvnw compile jib:dockerBuild
 
-2. docker images.
-         Just ensure that file-upload is there in your docker daemon
+2. docker images 
+**Just ensure that file-upload is there in your docker daemon**
          
 3. docker run --publish=8080:8080 file-upload:0.0.1-SNAPSHOT
 
